@@ -219,8 +219,8 @@ def transform_to_same_length(x, n_var, max_length):
 
 
 def transform_mts_to_ucr_format():
-    mts_root_dir = '/mnt/Other/mtsdata/'
-    mts_out_dir = '/mnt/nfs/casimir/archives/mts_archive/'
+    mts_root_dir = 'data/mtsdata/'
+    mts_out_dir = 'data/archives/mts_archive/'
     for dataset_name in MTS_DATASET_NAMES:
         # print('dataset_name',dataset_name)
 
@@ -265,6 +265,7 @@ def transform_mts_to_ucr_format():
         x_test = transform_to_same_length(x_test, n_var, max_length)
 
         # save them
+        os.makedirs(out_dir, exist_ok=True)
         np.save(out_dir + 'x_train.npy', x_train)
         np.save(out_dir + 'y_train.npy', y_train)
         np.save(out_dir + 'x_test.npy', x_test)
